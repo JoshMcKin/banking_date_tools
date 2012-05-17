@@ -67,9 +67,6 @@ describe BankingDateTools, "get_next_banking_day" do
 end
 
 describe BankingDateTools, "get_previous_banking_day" do
-  
-  
-  
   it "should desc" do
     options = {:no_weekends => true}
     get_previous_banking_day(Date.parse("2012-03-27"),options).should eql(Date.parse("2012-03-27"))    

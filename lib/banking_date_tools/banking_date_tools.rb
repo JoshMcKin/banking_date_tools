@@ -62,7 +62,7 @@ module BankingDateTools
         split = date.split("/") if date.include?("/")
         split = date.split("-") if date.include?("-")
         time = ""
-        if split[2].include?(":")
+        if split[2] && split[2].include?(":")
           year_time = split[2].split(" ")
           split[2] = year_time[0]
           time = year_time[1]
@@ -75,7 +75,7 @@ module BankingDateTools
     date
   end
   
-   # creates a date integer formated  like a MS.Net date tick
+  # creates a date integer formated  like a MS.Net date tick
   def tick(date=nil)
     if date.blank?
       date = Time.now
@@ -84,42 +84,4 @@ module BankingDateTools
     end
     ((date.to_f) *1000).to_i
   end
-
-
-  class Usage
-    include BankingDateTools
-  end
-    
-  def self.banking_day?(date, holidays={}, options={})
-    Usage.banking_day?(date, holidays, options)
-  end
-
-  def self.get_next_banking_day(date, holidays={},options={})
-    Usage.get_next_banking_day(date, holidays,options)
-  end
-
-  def self.get_previous_banking_day(date, holidays={},options={})
-    Usage.get_previous_banking_day(date, holidays,options)
-  end
-
-  def self.weekend?(date)
-    Usage.weekend?(date)
-  end
-
-  def self.sunday?(date)
-    Usage.sunday?(date)
-  end
-
-  def self.saturday?(date)
-    Usage.saturday?(date)
-  end
-
-  def self.safe_date(date)
-    Usage.safe_date(date)
-  end
-
-  def self.tick(date=nil)
-    Usage.tick(date)
-  end
-
 end
