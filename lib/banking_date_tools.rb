@@ -1,4 +1,5 @@
 require 'date'
+require 'banking_date_tools/extend_ruby'
 require 'banking_date_tools/banking_date_tools'
 module BankingDateTools
   def self.root
