@@ -11,12 +11,11 @@ Gem::Specification.new do |s|
   s.homepage    = ""
   s.summary     = %q{Banking Date Tools}
   s.description = %q{Banking Date Tools}
-
+ 
   s.add_development_dependency "rspec"
   s.add_development_dependency "rspec-autotest"
   s.add_development_dependency "autotest"
   s.add_development_dependency "mocha"
-  s.rubyforge_project = "banking_date_tools"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")

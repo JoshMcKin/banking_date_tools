@@ -5,21 +5,15 @@ Time.class_eval do
   end
 end
 
-String.class_eval do  
+String.class_eval do
+  US_DATE_REGEX = /^[0-9]{1,2}[\/\-][0-9]{1,2}[\/\-][0-9]{4}/.freeze
+  
   def to_date
-    if self.include?("/") || self.include?("-")
-      split = self.split("/") if self.include?("/")
-      split = self.split("-") if self.include?("-")
-      time = ""
-      if split[2] && split[2].include?(":")
-        year_time = split[2].split(" ")
-        split[2] = year_time[0]
-        time = year_time[1]
-      end
-      safe = "#{split[2]}-#{split[0]}-#{split[1]}"
-      safe << " #{time}" unless time.blank?
-      return Date.parse(safe) if split.length == 3 && split[2].length == 4
+    if self =~ US_DATE_REGEX
+      Date.strptime(self.gsub('/','-'), "%m-%d-%Y")
+    else
+      Date.parse(self)
     end
-    Date.parse(self)
   end
+
 end
